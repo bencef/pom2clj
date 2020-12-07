@@ -1,12 +1,14 @@
 namespace Bencef.Pom2Boot.Test
 
-open Xunit
+open FsCheck
+open FsCheck.Xunit
 
 open Bencef.Pom2Boot.Lib
 
+[<Properties( Arbitrary=[| typeof<DependencyGenerator> |] )>]
 module PomTest =
 
-    let createDocWith (deps: Dependency.t seq): string =
+    let createDocWith (deps: Dependency.t list): string =
         let optionally tag value =
             value
             |> Option.map (fun s -> sprintf "      <%s>%s</%s>" tag s tag)
@@ -41,8 +43,8 @@ module PomTest =
         |> Seq.map dep2str
         |> render
 
-    [<Fact>]
-    let ``Can call into module`` () =
-        let result = Pom.changeMe ()
-        let expected = 0
-        Assert.Equal(expected, result)
+    [<Property>]
+    let ``Dependencies are parsed correctly`` (deps: Dependency.t list) =
+        let doc = createDocWith deps
+        let paredDeps = Pom.parseString doc
+        deps = paredDeps |@ sprintf "%A = %A" deps paredDeps
