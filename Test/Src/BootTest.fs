@@ -9,7 +9,7 @@ open Bencef.Pom2Boot.Lib
 module private BootParser =
 
     let parseDependencies: Parser<Dependency.t list, unit> =
-        fun _ -> failwith "parse"
+        preturn []
 
 [<Properties( Arbitrary=[| typeof<DependencyGenerator> |] )>]
 module BootTest =
