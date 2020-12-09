@@ -14,12 +14,13 @@ module private BootParser =
     let parseDependency: Parser<Dependency.t, unit> =
         let quoted p = between (pchar '"') (pchar '"') p
         let parseOpt kind =
-            opt (spaces .>> skipString kind .>> spaces >>. quoted parseIdentifier)
+            (spaces .>> skipString kind .>> spaces >>. quoted parseIdentifier)
+            |> attempt |> opt
         let parseDepFields =
             parseIdentifier >>= (fun groupId ->
             pchar '/' >>. parseIdentifier >>= (fun artifactId ->
             spaces >>. quoted parseIdentifier >>= (fun version ->
-            attempt <| parseOpt ":scope" >>=? (fun scope ->
+            parseOpt ":scope" >>= (fun scope ->
             parseOpt ":type" >>= (fun dType ->
             preturn { Dependency.groupId = groupId
                       Dependency.artifactId = artifactId
