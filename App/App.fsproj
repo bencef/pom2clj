@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Lib\Lib.fsproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FSharp.CommandLine" Version="3.3.3805.29705" />
+  </ItemGroup>
+
 </Project>
