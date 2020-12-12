@@ -7,7 +7,7 @@
   <ItemGroup>
     <Compile Include="Src/Dependency.fs" />
     <Compile Include="Src/Pom.fs" />
-    <Compile Include="Src/Boot.fs" />
+    <Compile Include="Src/Clj.fs" />
   </ItemGroup>
 
   <ItemGroup>

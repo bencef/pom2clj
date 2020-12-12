@@ -1,8 +1,8 @@
-namespace Bencef.Pom2Boot.Test
+namespace Bencef.Pom2Clj.Test
 
 open FsCheck
 
-open Bencef.Pom2Boot.Lib
+open Bencef.Pom2Clj.Lib
 
 type DependencyGenerator =
     static member Dependency () =

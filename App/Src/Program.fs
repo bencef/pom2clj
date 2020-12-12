@@ -3,7 +3,7 @@
 open FSharp.CommandLine
 open FSharp.CommandLine.Internals
 
-open Bencef.Pom2Boot
+open Bencef.Pom2Clj
 
 let fileOption =
     commandOption {

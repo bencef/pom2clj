@@ -10,7 +10,7 @@
   <ItemGroup>
     <Compile Include="Src/DependencyGenerator.fs" />
     <Compile Include="Src/PomTest.fs" />
-    <Compile Include="Src/BootTest.fs" />
+    <Compile Include="Src/CljTest.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

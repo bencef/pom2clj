@@ -1,9 +1,9 @@
-namespace Bencef.Pom2Boot.Test
+namespace Bencef.Pom2Clj.Test
 
 open FsCheck
 open FsCheck.Xunit
 
-open Bencef.Pom2Boot.Lib
+open Bencef.Pom2Clj.Lib
 
 [<Properties( Arbitrary=[| typeof<DependencyGenerator> |] )>]
 module PomTest =

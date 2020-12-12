@@ -1,12 +1,12 @@
-namespace Bencef.Pom2Boot.Test
+namespace Bencef.Pom2Clj.Test
 
 open FsCheck
 open FsCheck.Xunit
 open FParsec
 
-open Bencef.Pom2Boot.Lib
+open Bencef.Pom2Clj.Lib
 
-module private BootParser =
+module private CljParser =
 
     let parseIdentifier: Parser<string, unit> =
         many1Chars (pchar '-' <|> pchar '.' <|> letter <|> digit)
@@ -33,13 +33,13 @@ module private BootParser =
         sepBy parseDependency skipNewline
 
 [<Properties( Arbitrary=[| typeof<DependencyGenerator> |] )>]
-module BootTest =
+module CljTest =
 
     [<Property>]
-    let ``Boot dependency output conforms to model`` (deps: Dependency.t list) =
-        let textOutput = Boot.emit deps
+    let ``Clj dependency output conforms to model`` (deps: Dependency.t list) =
+        let textOutput = Clj.emit deps
         let (parsedDeps, parseResult) =
-            let parseResult = run BootParser.parseDependencies textOutput
+            let parseResult = run CljParser.parseDependencies textOutput
             match parseResult with
             | Success (res, _, _) -> (res, parseResult)
             | _ -> ([], parseResult)

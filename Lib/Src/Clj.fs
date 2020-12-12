@@ -1,6 +1,6 @@
-namespace Bencef.Pom2Boot.Lib
+namespace Bencef.Pom2Clj.Lib
 
-module Boot =
+module Clj =
 
     let private dep2str (dep: Dependency.t): string =
         let optionally tag valueOpt =

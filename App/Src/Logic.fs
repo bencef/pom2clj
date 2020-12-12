@@ -1,6 +1,6 @@
-namespace Bencef.Pom2Boot
+namespace Bencef.Pom2Clj
 
-open Bencef.Pom2Boot.Lib
+open Bencef.Pom2Clj.Lib
 
 
 module Logic =
@@ -8,7 +8,7 @@ module Logic =
     let convert (filename: string): Result<unit, exn> =
         try
             let deps = Pom.parseFile filename
-            printf "%s" (Boot.emit deps)
+            printf "%s" (Clj.emit deps)
             Ok ()
         with
         | e -> Error e

@@ -1,4 +1,4 @@
-namespace Bencef.Pom2Boot.Lib
+namespace Bencef.Pom2Clj.Lib
 
 open FSharp.Data
 
