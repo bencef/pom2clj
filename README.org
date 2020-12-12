@@ -1,0 +1,25 @@
+#+OPTIONS: toc:nil num:nil ^:nil
+#+TITLE: Pom2Clj
+#+AUTHOR: Bence Fábián <begnoc@gmail.com>
+
+* Pom2Clj
+
+  A commandline tool to extract maven-style dependency information for
+  use in clojure build systems (such as [[https://leiningen.org/][leiningen]] or [[https://boot-clj.github.io/][boot]]).
+
+** Example usage
+
+   #+BEGIN_SRC sh
+     boot2clj --file=pom-example.xml
+   #+END_SRC
+
+   Should produce:
+
+   #+BEGIN_EXAMPLE
+     [org.junit.jupiter/junit-jupiter-api "${junit.version}" :scope "test"]
+     [org.junit.jupiter/junit-jupiter-engine "${junit.version}" :scope "test"]
+     [com.google.guava/guava "30.0-jre" :type "bundle"]
+     [com.google.sitebricks/slf4j "0.8.3"]
+   #+END_EXAMPLE
+
+   As of now properties are not interpolated.
