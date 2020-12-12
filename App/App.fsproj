@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Src/Logic.fs" />
     <Compile Include="Src/Program.fs" />
   </ItemGroup>
 
