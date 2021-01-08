@@ -10,7 +10,7 @@
 ** Example usage
 
    #+BEGIN_SRC sh
-     boot2clj --file=pom-example.xml
+     pom2clj --file=pom-example.xml
    #+END_SRC
 
    Should produce:
