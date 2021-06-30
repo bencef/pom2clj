@@ -8,17 +8,18 @@ let
 in
 pkgs.stdenv.mkDerivation rec {
   pname = "pom2clj";
-  version = "0.1.0";
+  version = "0.1.1";
 
   src = pkgs.fetchFromGitHub {
     owner = "bencef";
     repo = pname;
     rev = "v${version}";
-    sha256 = "10nfikdjbhjkqxpwkxxmd5h7wqxgivxvl1qix14nyg1h7f538xsi";
+    sha256 = "15yp3hjhpyd6x4dglnarqypz4w64rjsmg5vcv1b4f0kvhq0cappp";
   };
 
   buildInputs = with pkgs; [ dotnet-sdk_3 makeWrapper dotnetPackages.Nuget ];
 
+  # TODO: use 'publish' instead of 'build'
   buildPhase = ''
     mkdir home
     export HOME=$PWD/home
@@ -42,10 +43,4 @@ pkgs.stdenv.mkDerivation rec {
     makeWrapper $out/App/bin/Release/netcoreapp3.1/App $out/bin/pom2clj \
       --set DOTNET_ROOT ${pkgs.dotnet-sdk_3}
   '';
-  # installPhase = ''
-  #   mkdir -p $out/{bin,lib/eventstore}
-  #   cp -r bin/Release/* $out/lib/eventstore
-  #   makeWrapper "${mono}/bin/mono" $out/bin/eventstored \
-  #     --add-flags "$out/lib/eventstore/EventStore.ClusterNode/net471/EventStore.ClusterNode.exe"
-  # '';
 }
