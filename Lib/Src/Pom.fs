@@ -21,5 +21,5 @@ module Pom =
     let parseString (contents: string): Dependency.t list =
         PomProvider.Parse contents |> extractDependencies
 
-    let parseFile (path: string): Dependency.t list =
-        PomProvider.Load path |> extractDependencies
+    let parseFile (reader: System.IO.TextReader): Dependency.t list =
+        PomProvider.Load reader |> extractDependencies
