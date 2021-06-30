@@ -7,7 +7,8 @@ module Logic =
 
     let convert (filename: string): Result<unit, exn> =
         try
-            let deps = Pom.parseFile filename
+            use fileReader = System.IO.File.OpenText filename
+            let deps = Pom.parseFile fileReader
             printf "%s" (Clj.emit deps)
             Ok ()
         with
